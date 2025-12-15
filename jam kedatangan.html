@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Info Jam Kedatangan Peserta</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f5f5f5;
+  }
+  h2 {
+    text-align: center;
+  }
+  select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  #hasil {
+    margin-top: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    font-size: 18px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+</style>
+</head>
+<body>
+
+<h2>Informasi Jam Kedatangan<br>Sunnatan Massal</h2>
+
+<select id="nama">
+  <option value="">-- Pilih Nama Peserta --</option>
+</select>
+
+<div id="hasil"></div>
+
+<script>
+const peserta = [
+  {nama:"Romi Ardian Putra", waktu:"07.45"},
+  {nama:"Muhammad Fatih Alfarizki", waktu:"07.45"},
+  {nama:"Abyan Abdillah", waktu:"07.45"},
+  {nama:"Arsyad Hilmi Alhusaini", waktu:"07.45"},
+  {nama:"Alfarezel Aditya", waktu:"07.45"},
+  {nama:"Noval Nur Rachmat Hardiansyah", waktu:"07.45"},
+  {nama:"Kenzi Rafasya Putra", waktu:"07.45"},
+  {nama:"Iyandra Novaldy Manaf", waktu:"07.45"},
+  {nama:"Arfan Ahaship", waktu:"07.45"},
+  {nama:"Hazmy Cemal Habib", waktu:"07.45"},
+  {nama:"Muhamad Dika Pratama", waktu:"07.45"},
+  {nama:"M. Obaidillah A. Syahriza", waktu:"07.45"},
+  {nama:"M. Ostmand M. Syahriza", waktu:"07.45"},
+  {nama:"Farlen Attharauf M", waktu:"07.45"},
+  {nama:"Muhammad Kafsa Sakhiy Khalifano", waktu:"07.45"},
+  {nama:"Rumi Fathan Nuzulan", waktu:"07.45"},
+  {nama:"Artha Aqila Pranaja", waktu:"07.45"},
+  {nama:"Abid Aqila Pranaja", waktu:"07.45"},
+  {nama:"Dzaki Bani Sanredja", waktu:"07.45"},
+  {nama:"Arzan Faeyza Permana", waktu:"07.45"},
+  {nama:"Arjuna Aditya Sofyan", waktu:"07.45"},
+  {nama:"Razzan Yazid Nizam", waktu:"07.45"},
+  {nama:"Barrak Muhammad Shidiq", waktu:"07.45"},
+  {nama:"Issan Ahmad Alpahri", waktu:"07.45"},
+  {nama:"Dawsonich Aziel Eserovwe Garrel", waktu:"07.45"},
+  {nama:"Muhammad Danindra Alghaisan", waktu:"07.45"},
+  {nama:"Bima Arya Tri Nugraha", waktu:"07.45"},
+  {nama:"Adam Hanif Hidayatullah", waktu:"07.45"},
+  {nama:"Alendra Pratama Putra", waktu:"07.45"},
+  {nama:"Abizar Neldi Awwab Muzakki", waktu:"07.45"},
+  {nama:"Alif Mukhfarbian", waktu:"07.45"},
+  {nama:"M. Raffasya Albirru", waktu:"07.45"},
+  {nama:"Muhammad Reindra Alhasby", waktu:"07.45"},
+  {nama:"Muhammad Ashraf Laitan", waktu:"07.45"},
+  {nama:"Raihan Sahid Respati", waktu:"07.45"},
+  {nama:"Muhamad Arkan Alvalendra", waktu:"07.45"},
+  {nama:"Muhamad Alfat", waktu:"07.45"},
+  {nama:"Muhammad Alrazka Rafardhan", waktu:"07.45"},
+  {nama:"Wilman Mansyuriah Awaludin", waktu:"07.45"},
+  {nama:"Muhamad Ahsan Mahardika", waktu:"07.45"},
+  {nama:"Athala Shaqil Aqmar", waktu:"07.45"},
+  {nama:"Zayn Bilal Jauzi Firmansyah", waktu:"07.45"},
+  {nama:"Uwais Abizar Asyrafurahman", waktu:"07.45"},
+  {nama:"Beryl Attaqi Asyrafurahman", waktu:"07.45"},
+  {nama:"Aryasatya Rafa Maharis", waktu:"07.45"},
+  {nama:"Arsyaf Putra Firmansyah", waktu:"07.45"},
+  {nama:"Diker Margisto Seubelan", waktu:"07.45"},
+  {nama:"Muhammad Alvin Barokah", waktu:"07.45"},
+  {nama:"Jeonnal Alexio Mali", waktu:"07.45"},
+  {nama:"Gilang Dwi Syaputra", waktu:"07.45"},
+
+  {nama:"Matthew Alcander Nome", waktu:"10.00"},
+  {nama:"Henokh G.B Nome", waktu:"10.00"},
+  {nama:"Hosea Jesse Nome", waktu:"10.00"},
+  {nama:"Rayyanza Castaneer Maulana", waktu:"10.00"},
+  {nama:"Devano Guntur Bayu", waktu:"10.00"},
+  {nama:"Cello Adrian Romansyah", waktu:"10.00"},
+  {nama:"M Nazril Abizar", waktu:"10.00"},
+  {nama:"Mochamad Rafardhan", waktu:"10.00"},
+  {nama:"Abiyyu Arkana Bastian", waktu:"10.00"},
+  {nama:"Albara Daffa Pramanda", waktu:"10.00"},
+  {nama:"Muhammad Fadil", waktu:"10.00"},
+  {nama:"Ezar Alfaruq Sofyan", waktu:"10.00"},
+  {nama:"Arka Maulana", waktu:"10.00"},
+  {nama:"Dapi Ripaldi", waktu:"10.00"},
+  {nama:"Athaya Shaquille Dhizwar", waktu:"10.00"},
+  {nama:"Sendy Sandinata", waktu:"10.00"},
+  {nama:"Ken Grady Sagufta Prayoga", waktu:"10.00"},
+  {nama:"Delvin Aqmar Gunawan", waktu:"10.00"},
+  {nama:"Anaking Natanagara", waktu:"10.00"},
+  {nama:"Hamid Yahya Wafi", waktu:"10.00"},
+
+  {nama:"River El Zavier", waktu:"11.00"},
+  {nama:"Rivael Rizky Kanz", waktu:"11.00"},
+  {nama:"Alvino Rassad Maulana", waktu:"11.00"},
+  {nama:"Yuzarsif Badiuzzaman Qardhawi", waktu:"11.00"},
+  {nama:"Arshaka Saputra", waktu:"11.00"},
+  {nama:"Muhammad Alfarissi Nasution", waktu:"11.00"},
+  {nama:"Naveen Omar Anthony Lotan", waktu:"11.00"},
+  {nama:"Abizar Alvarendraa", waktu:"11.00"},
+  {nama:"Abil Sidqiarsalan", waktu:"11.00"},
+  {nama:"Askara Daviandra Putra", waktu:"11.00"}
+];
+
+const select = document.getElementById("nama");
+const hasil = document.getElementById("hasil");
+
+peserta.forEach(p => {
+  const opt = document.createElement("option");
+  opt.value = p.nama;
+  opt.textContent = p.nama;
+  select.appendChild(opt);
+});
+
+select.addEventListener("change", function() {
+  const data = peserta.find(p => p.nama === this.value);
+  hasil.innerHTML = data
+    ? `Nama: <b>${data.nama}</b><br>Jam Kedatangan: <b>${data.waktu} WIB</b>`
+    : "";
+});
+</script>
+
+</body>
+</html>
